@@ -14,3 +14,6 @@
   - [x] /top
   - [x] /id
   - [x] /save
+  - [ ] /rules
+  - [ ] /links
+  - [ ] /menu
