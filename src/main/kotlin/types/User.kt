@@ -27,7 +27,7 @@ class User(_id: Int, username: String, name: String, _score: Int, _money: Int, _
     fun getDump() : String {
         return  "<b>${name} (${username.toString()})</b>\n\n" +
                 "Ранг: ${getRang().name}\n" +
-                // "Монеты: ${money}\n" +
+                "Карма: ${money}\n" +
                 "Сообщений отправлено: ${score}\n" +
                 "Зарегистрирован: ${reg_date}"
     }

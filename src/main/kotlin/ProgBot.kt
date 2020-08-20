@@ -146,19 +146,20 @@ class ProgBot() {
         }
 
         Command(this, "/rules", true).handle = { args, from, msg ->
-            sendTempMessage(msg.chat.id, msg.message_id, "<b>Правила группы:</b>\n\n" +
-                    "1) Не быть мудаком.\n" +
-                    "2) Не флудить и не спамить.\n" +
-                    "3) Не кидать жесть (цп или расчлененка) \n" +
-                    "4) Не рекламировать то что не относится к программированию или какую-то херню", 120)
+            sendTempMessage(msg.chat.id, msg.message_id, "<b>Правила Группы:</b>\n\n" +
+                    "1) Не быть мудаком\n" +
+                    "2) Не спамить\n" +
+                    "3) Запрет на 18+\n" +
+                    "4) Запрещена реклама\n" +
+                    "5) Твинки банятся\n" +
+                    "6) Никнеймы а-ля \"Хакер\" банятся", 120)
             autoRemoveMessage(msg.chat.id, msg.message_id, 120)
         }
 
         Command(this, "/links", true).handle = { args, from, msg ->
             sendTempMessage(msg.chat.id, msg.message_id, "<b>Ссылки группы:</b>\n\n" +
                     "@bell4enok_music\n" +
-                    "@optimine_mc\n" +
-                    "t.me/joinchat/J8Kc5kamP2dTDlkOB3QXaw\n"
+                    "https://t.me/ktxdevblog"
                     , 120)
             autoRemoveMessage(msg.chat.id, msg.message_id, 120)
         }
@@ -171,12 +172,58 @@ class ProgBot() {
             autoRemoveMessage(msg.chat.id, msg.message_id, 20)
         }
 
+        var arr = arrayListOf<Int>()
         bot.onMessage {
-            if(it.from!!.is_bot || !it.chat!!.username.equals("Programmerchats")) return@onMessage
+            //println(it.chat.id)
+            if(it.from!!.is_bot || it.chat!!.id != -1001400025502) return@onMessage
             checkUser(it)
 
             println("${it.from!!.first_name} (@${it.from!!.username}, ${it.from!!.id}) >> ${it.text}")
             getUserById(it.from!!.id)!!.score++
+
+            if(it!!.reply_to_message != null)
+                if(it!!.from!!.id != it.reply_to_message!!.from!!.id) {
+                    if(it.text == "+") { // + карма
+                        if(!arr.contains(it!!.from!!.id)) {
+
+                            var usr = getUserById(it!!.reply_to_message!!.from!!.id)
+
+                            usr!!.money++
+                           // var r = bot.sendMessage(it!!.chat!!.id, "Вы увеличили карму для ${usr!!.name} (${usr!!.username})", replyTo = it!!.message_id)
+                           // autoRemoveMessage(it!!.chat!!.id, r.get().message_id, 15)
+                           // autoRemoveMessage(it!!.chat!!.id, it!!.message_id, 15)
+
+                            arr.add(it!!.from!!.id)
+                            thread {
+                                Thread.sleep(1000 * 60)
+                                arr.remove(it!!.from!!.id)
+                            }
+                        } else {
+                            //var r = bot.sendMessage(it!!.chat!!.id, "Менять карму можно только раз в минуту!", replyTo = it!!.message_id)
+                            //autoRemoveMessage(it!!.chat!!.id, r.get().message_id, 15)
+                           // autoRemoveMessage(it!!.chat!!.id, it!!.message_id, 15)
+                        }
+                    } else if(it.text == "-") { // - kарма
+                        if(!arr.contains(it!!.from!!.id)) {
+                            var usr = getUserById(it!!.reply_to_message!!.from!!.id)
+
+                            usr!!.money--
+                            //var r = bot.sendMessage(it!!.chat!!.id, "Вы уменьшили карму для ${usr!!.name} (${usr!!.username})", replyTo = it!!.message_id)
+                           // autoRemoveMessage(it!!.chat!!.id, r.get().message_id, 15)
+                           // autoRemoveMessage(it!!.chat!!.id, it!!.message_id, 15)
+
+                            arr.add(it!!.from!!.id)
+                            thread {
+                                Thread.sleep(1000 * 60)
+                                arr.remove(it!!.from!!.id)
+                            }
+                        } else {
+                          //  var r = bot.sendMessage(it!!.chat!!.id, "Менять карму можно только раз в минуту!", replyTo = it!!.message_id)
+                           // autoRemoveMessage(it!!.chat!!.id, r.get().message_id, 15)
+                           // autoRemoveMessage(it!!.chat!!.id, it!!.message_id, 15)
+                        }
+                    }
+                }
         }
 
         bot.start()
