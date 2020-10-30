@@ -1,0 +1,22 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.py]
+indent_style = space
+indent_size = 4
+charset = utf-8
+
+[Makefile]
+indent_style = tab
+
+[*.{.yml,.yaml}]
+indent_style = space
+indent_size = 2
+
+[{.coveragerc,black.toml,flake8.cfg,mypy.ini}]
+indent_style = space
+indent_size = 2
