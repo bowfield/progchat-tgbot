@@ -3,6 +3,6 @@ bot:
 database:
   host: 0.0.0.0
   port: 6432
-  user: "progbotdbuser"
-  password: "progbotdbpass"
-  database: "progbotdb"
+  user: progbotdbuser
+  password: progbotdbpass
+  database: progbotdb
