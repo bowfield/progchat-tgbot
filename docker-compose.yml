@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: prog_bot_db
+    image: library/postgres:latest
+    environment:
+      POSTGRES_USER: "progbotdbuser"
+      POSTGRES_PASSWORD: "progbotdbpass"
+      POSTGRES_DB: "progbotdb"
+    restart: always
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+    - 6432:5432
