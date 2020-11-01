@@ -1,6 +1,7 @@
 ### Don't forget to add your IDE specific folders to .git/info/exclude
 ### User specific
 config/config.yml
+postgres_data/
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
