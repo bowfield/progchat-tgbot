@@ -1,4 +1,5 @@
 init:
+	# ToDo: Add documentation!
 	@echo "SETTING UP PROJECT ENVIRONMENT"
 	@echo "######################################################"
 	@echo "#  Adding IDE specific folders to .git/info/exclude  #"
@@ -47,3 +48,25 @@ init-full:
 #	@echo "Finished || DON'T FORGET TO MARK \`./src/\` FOLDER AS SOURCE"
 
 
+reformat:
+	# ToDo: add documentation!
+	pipenv run black . --config "config/black.toml"
+
+.IGNORE:check
+check:
+	# ToDo: add documentation!
+	pipenv run flake8 "./src/" --config "config/flake8.cfg"
+	pipenv run mypy src/  --config "config/mypy.ini" --html-report ./htmlcov_mypy
+
+.IGNORE:tests
+tests:
+	# ToDo: add documentation!
+	pipenv run pytest --cov-config=config/.coveragerc --cov-report=html --cov=src --doctest-modules src/
+
+.IGNORE:static-all
+static-all:
+	# ToDo: add documentation!
+	pipenv run black . --config "config/black.toml"
+	pipenv run flake8 "./src/" --config "config/flake8.cfg"
+	pipenv run mypy src/  --config "config/mypy.ini" --html-report ./htmlcov_mypy
+	pipenv run pytest --cov-config=config/.coveragerc --cov-report=html --cov=src --doctest-modules src/
