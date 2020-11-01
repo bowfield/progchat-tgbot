@@ -11,6 +11,7 @@ pytest = "*"
 pytest-cov = "*"
 black = "==20.8b1"
 ipython = "*"
+lxml = "*"
 
 [packages]
 aiogram = "*"
