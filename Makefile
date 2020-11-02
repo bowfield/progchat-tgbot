@@ -47,7 +47,6 @@ init-full:
 #	@echo "##############################################################"
 #	@echo "Finished || DON'T FORGET TO MARK \`./src/\` FOLDER AS SOURCE"
 
-
 reformat:
 	# ToDo: add documentation!
 	pipenv run black . --config "config/black.toml"
