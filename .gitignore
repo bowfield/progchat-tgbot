@@ -2,6 +2,7 @@
 ### User specific
 config/config.yml
 postgres_data/
+htmlcov_mypy/
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
