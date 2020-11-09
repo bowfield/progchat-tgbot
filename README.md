@@ -1,6 +1,10 @@
 # Proggrammer.exe Bot
 Бот для чата Proggrammer.exe
 
+# Запуск
+* запустить export BOT_TOKEN=*токен бота*
+* ...
+
 ## Reproduction steps
 ### Using make
 1. [Clone](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository) repository.
