@@ -2,7 +2,7 @@ import os
 import logging
 from aiogram import Bot, Dispatcher, executor, types
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level = logging.DEBUG)
 
 bot = Bot(token=os.environ.get('BOT_TOKEN'))
 dp = Dispatcher(bot)
