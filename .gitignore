@@ -89,6 +89,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+venvpip
 
 # mkdocs documentation
 /site
@@ -107,3 +108,5 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# ide
+.idea
